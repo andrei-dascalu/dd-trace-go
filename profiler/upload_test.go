@@ -34,11 +34,11 @@ var testBatch = batch{
 	profiles: []*profile{
 		{
 			name: "cpu",
-			data:  []byte("my-cpu-profile"),
+			data: []byte("my-cpu-profile"),
 		},
 		{
 			name: "heap",
-			data:  []byte("my-heap-profile"),
+			data: []byte("my-heap-profile"),
 		},
 	},
 }
@@ -79,10 +79,10 @@ func TestTryUpload(t *testing.T) {
 		fmt.Sprintf("runtime-id:%s", globalconfig.RuntimeID()),
 	}, tags)
 	for k, v := range map[string]string{
-		"version":  "3",
-		"family":   "go",
+		"version":          "3",
+		"family":           "go",
 		"data[cpu.pprof]":  "my-cpu-profile",
-		"data[heap.pprof]":  "my-heap-profile",
+		"data[heap.pprof]": "my-heap-profile",
 	} {
 		assert.Equal(v, fields[k], k)
 	}
@@ -143,7 +143,7 @@ func BenchmarkDoRequest(b *testing.B) {
 	defer srv.Close()
 	prof := profile{
 		name: "heap",
-		data:  []byte("my-heap-profile"),
+		data: []byte("my-heap-profile"),
 	}
 	bat := batch{
 		start:    time.Now().Add(-10 * time.Second),
